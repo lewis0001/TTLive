@@ -20,6 +20,8 @@ if sys.version_info < (3, 12):
 
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode=async_mode)
 
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="eventlet")
+
 # Logging
 logs_path = Path("logs")
 logs_path.mkdir(exist_ok=True)
