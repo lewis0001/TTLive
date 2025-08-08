@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>TikTok Live Dashboard</title>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="connect-section">
+        <input id="username" placeholder="TikTok username">
+        <button id="connect">Connect</button>
+        <button id="disconnect" disabled>Disconnect</button>
+    </div>
+
+    <div id="stats">
+        <div>Viewer Count: <span id="viewerCount">0</span></div>
+        <div>Total Likes: <span id="likeCount">0</span></div>
+        <div>Total Shares: <span id="shareCount">0</span></div>
+        <div id="battleTimer"></div>
+        <h3>Top Gifters</h3>
+        <ul id="leaderboard"></ul>
+    </div>
+
+    <h3>Comments</h3>
+    <ul id="comments"></ul>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>
