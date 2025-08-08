@@ -1,4 +1,5 @@
 import logging
+import sys
 from pathlib import Path
 from threading import Thread
 
@@ -7,6 +8,18 @@ from flask_socketio import SocketIO, emit
 from TikTokLive import TikTokLiveClient
 
 app = Flask(__name__)
+
+# Avoid eventlet on Python versions where it is incompatible
+async_mode = "threading"
+if sys.version_info < (3, 12):
+    try:
+        import eventlet  # noqa: F401
+        async_mode = "eventlet"
+    except Exception:
+        pass
+
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode=async_mode)
+
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="eventlet")
 
 # Logging
